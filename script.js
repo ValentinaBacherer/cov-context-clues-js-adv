@@ -4,15 +4,14 @@ var weapons = ['knife', 'stone', 'scissors', 'fork', 'spoon', 'table', 'gun', 's
 
 
 $(document).ready(function () {
-    for (var i = 0; i < 100; i++) {
+    for (var i = 1; i <= 100; i++) {
         $('body').append(`<h3 id="${i}">Accusation ${i}</h3>`)
-
     }
-    $('h3').click(function () {
-        var friend = friends[Math.floor(Math.random() * friends.length)]
-        var weapon = weapons[Math.floor(Math.random() * weapons.length)]
-        var location = locations[Math.floor(Math.random() * locations.length)]
-        alert(`Accusation ${this.id}: I accuse ${friend}, with the ${weapon} in the ${location}!`)
 
+    $('h3').click(function () {
+        var friend = friends[Math.floor((this.id / 100) * friends.length)]
+        var weapon = weapons[Math.floor((this.id / 100) * weapons.length)]
+        var location = locations[Math.floor((this.id / 100) * locations.length)]
+        alert(`Accusation ${this.id}: I accuse ${friend}, with the ${weapon} in the ${location}!`)
     })
 })
